@@ -1,26 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <app-header :text="headerText" @renew="renewStr"/>
+    <user-info-input-form />
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import AppHeader from "@/components/AppHeader.vue";
+import UserInfoInputForm from "@/components/UserInfoInputForm.vue";
+import {ref} from "vue";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+const headerText = ref("initHeader");
+const renewStr = () => {
+  headerText.value = 'renewHi';
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
