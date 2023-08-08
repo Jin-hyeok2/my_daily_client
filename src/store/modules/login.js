@@ -1,7 +1,7 @@
 export default {
   state: {
-    username: '',
-    email: '',
+    memberId: '',
+    accessToken: '',
     profileImgPath: '',
   }
 }
