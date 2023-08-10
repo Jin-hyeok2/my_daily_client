@@ -1,35 +1,38 @@
 <script setup>
-import InputString from "@/common/input/InputString.vue";
-import InputNumber from "@/common/input/InputNumber.vue";
 import { ref } from "vue";
-import InputDate from "@/common/input/InputDate.vue";
+import DateUtil from "@/util/date";
 
-const value = ref(3);
-
+const number = ref(3);
+const date = ref(new DateUtil());
 const updatedValue = (updated) => {
-  value.value = updated;
+  number.value = updated;
 };
 const onClickButton = () => {
-  console.log(value.value);
+  console.log(number.value);
 };
 </script>
 
 <template>
   <div class="main-page">
-    <input-string width="100%" label="코드" />
+    <input-string label="코드" />
     <input-number
       label="숫자"
-      :value="value"
+      :value="number"
       :step="3"
       @update:value="updatedValue"
+      disable-step
     />
-    <input-date/>
+    <input-date :value="date" label="달력" />
     <button @click="onClickButton" />
   </div>
 </template>
 
 <style scoped lang="scss">
 .main-page {
+  display: flex;
+  flex-direction: column;
   background-color: antiquewhite;
+  width: 90%;
+  box-sizing: border-box;
 }
 </style>

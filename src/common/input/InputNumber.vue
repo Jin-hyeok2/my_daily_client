@@ -24,6 +24,16 @@ const props = defineProps({
     required: false,
     default: 1,
   },
+  labelWidth: {
+    type: String,
+    required: false,
+    default: "30%",
+  },
+  disableStep: {
+    type: Boolean,
+    required: false,
+    default: false,
+  }
 });
 const onChangeInputNumber = (event) => {
   emit("update:value", event.target.value);
@@ -42,10 +52,17 @@ const onClickMinusButton = () => {
 
 <template>
   <div class="component">
-    <label for="input-number" class="label">{{ props.label }}</label>
+    <label
+      for="input-number"
+      class="label"
+      :style="{ width: props.labelWidth }"
+    >
+      {{ props.label }}
+    </label>
     <input
-      type="text"
+      type="number"
       class="common-input-number"
+      :style="{ width: 'calc(100% - ' + props.labelWidth + ')' }"
       @input="onChangeInputNumber"
       :value="props.value"
     />
@@ -53,11 +70,13 @@ const onClickMinusButton = () => {
       :icon="['fas', 'plus']"
       class="plus"
       @click="onClickPlusButton"
+      v-if="!props.disableStep"
     />
     <font-awesome-icon
       :icon="['fas', 'minus']"
       class="minus"
       @click="onClickMinusButton"
+      v-if="!props.disableStep"
     />
   </div>
 </template>
@@ -68,19 +87,28 @@ const onClickMinusButton = () => {
   justify-content: center;
   align-items: center;
   height: 100px;
+  box-sizing: border-box;
+  margin: 10px 15px;
 }
 
 .label {
   margin-right: 5px;
+  text-align: right;
 }
 
 .common-input-number {
   border: none;
-  border-bottom: 1px solid dodgerblue;
   height: 25px;
+  background-color: whitesmoke;
+  -webkit-appearance: none;
 
   &:focus {
-    outline: none;
+    outline: inset antiquewhite;
+  }
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
 

@@ -10,15 +10,9 @@ const renewStr = () => {
 </script>
 
 <template>
-  <div>
+  <app-layer>
     <app-header :text="headerText" @renew="renewStr" />
     <router-view />
     <app-footer />
-  </div>
+  </app-layer>
 </template>
-
-<style>
-body {
-  text-align: center;
-}
-</style>

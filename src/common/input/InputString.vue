@@ -1,9 +1,10 @@
 <script setup>
-import {defineProps, defineEmits} from "vue";
-const emit = defineEmits(["update"])
+import { defineEmits, defineProps } from "vue";
+
+const emit = defineEmits(["update"]);
 const onChangeInputString = (event) => {
   emit("update", event.target.value);
-}
+};
 const props = defineProps({
   width: {
     type: String,
@@ -15,15 +16,28 @@ const props = defineProps({
     required: false,
     default: "",
   },
+  labelWidth: {
+    type: String,
+    required: false,
+    default: "30%",
+  },
 });
 </script>
 
 <template>
-  <div class="component" :style="{ width: props.width }">
-    <label for="common-input-string" class="label">{{
-      props.label
-    }}</label>
-    <input type="text" class="common-input-string" @change="onChangeInputString"/>
+  <div class="component">
+    <label
+      for="common-input-string"
+      class="label"
+      :style="{ width: props.labelWidth }"
+      >{{ props.label }}</label
+    >
+    <input
+      type="text"
+      class="common-input-string"
+      @change="onChangeInputString"
+      :style="{ width: 'calc(100% - ' + props.labelWidth + ')' }"
+    />
   </div>
 </template>
 
@@ -33,17 +47,22 @@ const props = defineProps({
   justify-content: center;
   align-items: center;
   height: 100px;
+  margin: 10px 15px;
+  box-sizing: border-box;
 }
+
 .label {
   margin-right: 5px;
+  text-align: right;
 }
+
 .common-input-string {
   border: none;
-  background-color: white;
+  background-color: whitesmoke;
   height: 25px;
-  border-bottom: 1px solid dodgerblue;
+
   &:focus {
-    outline: none;
+    outline: inset antiquewhite;
   }
 }
 </style>
