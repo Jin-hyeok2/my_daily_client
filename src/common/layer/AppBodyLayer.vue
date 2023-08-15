@@ -3,18 +3,17 @@
 </script>
 
 <template>
-<div class="app-layer">
+<div class="app-body-layer">
   <slot/>
 </div>
 </template>
 
 <style scoped lang="scss">
-.app-layer {
+.app-body-layer{
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  flex-direction: row;
   width: 100%;
-  height: 100%;
+  height: 75%;
+  box-sizing: border-box;
 }
 </style>

@@ -1,7 +1,7 @@
 <script setup>
-import AppHeader from "@/components/AppHeader.vue";
 import { ref } from "vue";
-import AppFooter from "@/components/AppFooter.vue";
+import AppSidebar from "@/components/AppSidebar.vue";
+import AppFooterLayer from "@/common/layer/AppFooterLayer.vue";
 
 const headerText = ref("initHeader");
 const renewStr = () => {
@@ -11,8 +11,17 @@ const renewStr = () => {
 
 <template>
   <app-layer>
-    <app-header :text="headerText" @renew="renewStr" />
-    <router-view />
-    <app-footer />
+    <app-header-layer :text="headerText" @renew="renewStr" />
+    <app-body-layer>
+      <app-sidebar />
+      <router-view />
+    </app-body-layer>
+    <app-footer-layer />
   </app-layer>
 </template>
+
+<style lang="scss">
+#app {
+  height: 100vh;
+}
+</style>
