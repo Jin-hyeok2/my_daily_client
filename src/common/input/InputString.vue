@@ -21,6 +21,11 @@ const props = defineProps({
     required: false,
     default: "30%",
   },
+  value: {
+    type: String,
+    required: false,
+    default: "",
+  }
 });
 </script>
 
@@ -37,6 +42,7 @@ const props = defineProps({
       class="common-input-string"
       @change="onChangeInputString"
       :style="{ width: 'calc(100% - ' + props.labelWidth + ')' }"
+      :value="props.value"
     />
   </div>
 </template>
