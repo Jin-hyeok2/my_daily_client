@@ -1,5 +1,5 @@
 <script setup>
-import { defineEmits, defineProps, ref } from "vue";
+import { ref } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const emit = defineEmits(["update:value"]);

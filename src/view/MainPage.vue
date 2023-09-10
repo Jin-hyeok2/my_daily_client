@@ -1,42 +1,31 @@
 <script setup>
-import { ref } from "vue";
-import DateUtil from "@/util/date";
-import MenuManagement from "@/view/MenuManagement.vue";
-import axios from "axios";
+import AppFooterLayer from "@/common/layer/AppFooterLayer.vue";
+import AppSidebar from "@/components/AppSidebar.vue";
 
-const number = ref(3);
-const date = ref(new DateUtil());
-const updatedValue = (updated) => {
-  number.value = updated;
-};
-const onClickButton = async () => {
-  console.log(number.value);
-  const response = await axios.get("http://localhost:9121")
-  console.log(response);
-};
 </script>
 
 <template>
   <div class="main-page">
-    <menu-management />
-    <input-number
-      label="숫자"
-      :value="number"
-      :step="3"
-      @update:value="updatedValue"
-      disable-step
-    />
-    <input-date :value="date" label="달력" />
-    <button @click="onClickButton" />
+    <app-layer>
+      <app-header-layer :text="headerText" @renew="renewStr" />
+      <app-body-layer>
+        <app-sidebar />
+      </app-body-layer>
+      <app-footer-layer />
+    </app-layer>
   </div>
 </template>
 
 <style scoped lang="scss">
 .main-page {
+  height: 100%;
+  width: 100%;
+}
+.app-layer {
   display: flex;
   flex-direction: column;
   background-color: antiquewhite;
-  width: 90%;
+  width: 100%;
   box-sizing: border-box;
 }
 </style>

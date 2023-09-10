@@ -1,5 +1,4 @@
 <script setup>
-import { defineEmits, defineProps } from "vue";
 
 const emit = defineEmits(["update"]);
 const onChangeInputString = (event) => {
@@ -23,7 +22,7 @@ const props = defineProps({
   },
   value: {
     type: String,
-    required: false,
+    required: true,
     default: "",
   }
 });

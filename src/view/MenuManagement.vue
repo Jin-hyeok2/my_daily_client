@@ -14,10 +14,7 @@ const updateName = (input) => {
 }
 
 const clickButton = async () => {
-  const filePath = "@/../menu.json"
-  const res = await fetch(filePath);
-  const menuData =  await res.json();
-  console.log(menuData);
+
 }
 </script>
 
