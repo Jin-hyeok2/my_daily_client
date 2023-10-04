@@ -18,13 +18,13 @@
     "express": "^4.18.2",
     "http-proxy-middleware": "^2.0.6",
     "memory-cache": "^0.2.0",
+    "pinia": "^2.1.6",
     "prettier": "^3.0.1",
     "sass": "^1.64.2",
     "sass-loader": "^13.3.2",
     "vue": "^3.2.13",
     "vue-router": "^4.2.4",
-    "vuetify": "^3.3.11",
-    "vuex": "^4.1.0"
+    "vuetify": "^3.3.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -48,8 +48,7 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {
-    }
+    "rules": {}
   },
   "browserslist": [
     "> 1%",

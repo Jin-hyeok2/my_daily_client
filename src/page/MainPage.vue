@@ -1,15 +1,29 @@
 <script setup>
 import AppFooterLayer from "@/common/layer/AppFooterLayer.vue";
 import AppSidebar from "@/components/AppSidebar.vue";
+import {menuUseStore} from "@/store/webMenu";
+import {storeToRefs} from "pinia";
+import AppHeaderMenu from "@/components/AppHeaderMenu.vue";
+import {$} from "@/store";
 
+const menuStore = menuUseStore();
+const {menu} = storeToRefs(menuStore)
+menu.value = $().request.get("/meta/menus")
 </script>
 
 <template>
   <div class="main-page">
     <app-layer>
-      <app-header-layer :text="headerText" @renew="renewStr" />
+      <app-header-layer >
+        <app-header-menu :menus="menu"/>
+      </app-header-layer>
       <app-body-layer>
+        <template #category >
         <app-sidebar />
+        </template>
+        <template #grid >
+          <router-view/>
+        </template>
       </app-body-layer>
       <app-footer-layer />
     </app-layer>

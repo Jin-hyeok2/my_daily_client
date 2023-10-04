@@ -4,7 +4,8 @@
 
 <template>
 <div class="app-body-layer">
-  <slot/>
+  <slot name="category"/>
+  <slot name="grid"/>
 </div>
 </template>
 

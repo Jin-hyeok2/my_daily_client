@@ -4,6 +4,8 @@
 <template>
   <div class="app-header">
     해더입니다
+    <slot />
+    <router-link to="/sign-in" > 로그인 페이지 이동 </router-link>
   </div>
 </template>
 <style scoped lang="scss">

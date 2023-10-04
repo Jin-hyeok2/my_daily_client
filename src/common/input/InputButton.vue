@@ -8,7 +8,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(["submit"]);
-const onClick = () => {
+function onClick() {
   emit("submit");
 }
 </script>

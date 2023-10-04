@@ -1,30 +1,20 @@
-// import { createStore } from "vuex";
-// import login from "@/store/modules/login";
-// import formInitiator from "@/store/modules/formInitiator"
-//
-// export default createStore({
-//   modules: [login, formInitiator],
-// });
+import { defineStore } from "pinia";
+import {ref} from "vue";
+import req from "@/global/request";
+export const $ = defineStore("data", () =>{
+  const isLoading = ref(false);
+  const request = req;
+  function startApiRequest() {
+    isLoading.value = true
+  }
 
-
-import { createStore } from "vuex";
-// import login from "@/store/modules/login";
-// import formInitiator from "@/store/modules/formInitiator"
-
-export default createStore({
-  state: {
-    initFunction: undefined,
-  },
-  mutations: {
-    setInitFunction(state, func) {
-      state.initFunction = func;
-    },
-  },
-  actions: {
-    callFunction({ state }) {
-      if (state.initFunction) {
-        state.initFunction();
-      }
-    },
-  },
+  function endApiRequest() {
+    isLoading.value = false
+  }
+  return {
+    isLoading,
+    request,
+    startApiRequest,
+    endApiRequest
+  }
 });

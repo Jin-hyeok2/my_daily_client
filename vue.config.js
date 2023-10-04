@@ -1,7 +1,14 @@
 
 module.exports = {
   devServer: {
-    proxy: 'http://localhost:8991',
+    proxy: {
+      '/admin': {
+        target: 'http://localhost:8991'
+      },
+      '/meta': {
+        target: 'http://localhost:8992'
+      }
+    },
     client: {
       overlay: false
     },

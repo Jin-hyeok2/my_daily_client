@@ -57,9 +57,8 @@ async function onClickSignUp() {
     signUpPlatform: "DEFAULT",
     roles: []
   }
-  const response = await axios.post("/members", requestBody);
+  const response = await axios.post("/admin/members", requestBody);
   console.log(response);
-  console.log("hello world");
 }
 </script>
 
